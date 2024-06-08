@@ -12,3 +12,23 @@ describe('Basic Test', () => {
     })
   })
 })
+
+describe('Book Route', () => {
+  it('Must get book list', async () => {
+    const res = await request(app).get('/books');
+    expect(res.status).toBe(200);
+    expect(res.body).toMatchObject([])
+  })
+  it('Must add a book', async () => {
+    const res = await request(app).post('/book').send({
+      name: 'Sample Book',
+      author: 'Hari Acharya'
+    })
+    expect(res.status).toBe(201)
+    expect(res.body.data).toMatchObject({
+      id: expect.any(String),
+      author: 'Hari Acharya',
+      name: 'Sample Book'
+    })
+  })
+})
