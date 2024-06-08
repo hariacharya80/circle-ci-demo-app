@@ -32,3 +32,19 @@ describe('Book Route', () => {
     })
   })
 })
+
+describe('Test redis cache', () => {
+  it('Must set and get redis cache', async () => {
+    const res = await request(app).post('/redis-cache').send({
+      cacheKey: 'Name',
+      cacheValue: 'Hari'
+    });
+
+    expect(res.status).toBe(200);
+    expect(res.body).toMatchObject({
+      key: 'Name',
+      value: 'Hari_from_redis'
+    })
+  })
+
+})

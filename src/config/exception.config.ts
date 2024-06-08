@@ -8,4 +8,5 @@ export async function handleExceptions(error: unknown, _req: Request, res: Respo
   if (error instanceof InternalServerErrorException) {
     return res.status(500).json({ message: error.message })
   }
+  return res.status(500).json({ message: 'Unknown Error' })
 }
