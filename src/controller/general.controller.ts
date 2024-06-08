@@ -5,7 +5,7 @@ export async function indexPageGreeting(_req: Request, res: Response, next: Next
     return res.json({
       name: 'Hari Acharya',
       age: 22,
-      email: 'hariacharyanepal7@gmil.com'
+      email: 'hariacharyanepal7@gmail.com'
     }).end()
   } catch (err) {
     return next(err)

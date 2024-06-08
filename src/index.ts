@@ -5,7 +5,7 @@ import mainRouter from './routes/mainRouter';
 import EnvConfig from './config/env.config';
 import { handleExceptions } from './config/exception.config';
 import { Database } from './config/database.config';
-const app = express()
+export const app = express()
 
 
 app.use(express.json())
