@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import mainRouter from './routes/mainRouter';
 import EnvConfig from './config/env.config';
 import { handleExceptions } from './config/exception.config';
+import { Database } from './config/database.config';
 const app = express()
 
 
@@ -13,6 +14,18 @@ app.use(morgan('dev'))
 app.use(mainRouter)
 app.use(handleExceptions)
 
-app.listen(EnvConfig.PORT, () => {
-  console.log(`Application started and listening on port ${EnvConfig.PORT}`)
-})
+
+async function main() {
+  try {
+    const db = new Database()
+    await db.connect();
+    app.listen(EnvConfig.PORT, () => {
+      console.log(`Application started and listening on port ${EnvConfig.PORT}`)
+    })
+  } catch (error) {
+    console.error(error)
+    process.exit(1)
+  }
+}
+
+main();
