@@ -23,7 +23,6 @@ async function main() {
     app.listen(EnvConfig.PORT, () => {
       console.log(`Application started and listening on port ${EnvConfig.PORT}`)
     })
-    return redisClient;
   } catch (error) {
     console.error(error)
     process.exit(1)
