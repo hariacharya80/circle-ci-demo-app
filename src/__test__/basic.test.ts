@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { app } from '../src';
+import { app } from '..';
 
 describe('Basic Test', () => {
   test('Test Index Route', async () => {
