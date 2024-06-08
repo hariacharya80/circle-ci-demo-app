@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: node:stable
+      - image: circleci/postgres
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DATABASE: demo
+      - image: redis:latest
+    working_directory: ~/repo
+    steps:
+    - checkout
+    - run: npm install
+    - run: npm run build
